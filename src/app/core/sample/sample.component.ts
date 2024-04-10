@@ -1,14 +1,12 @@
 import { NgIf } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
-import { RouterLink } from "@angular/router";
-import { ListErrorsComponent } from "src/app/shared/components/list-errors.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @Component({
   selector: "app-sample",
   standalone: true,
-  imports: [RouterLink, NgIf, ListErrorsComponent, ReactiveFormsModule],
+  imports: [FormsModule],
   templateUrl: "./sample.component.html",
   styleUrl: "./sample.component.css",
 })
@@ -20,7 +18,7 @@ export class SampleComponent {
 
   sendText(): void {
     const data = { text: this.text };
-    this.http.post("API_ENDPOINT", data).subscribe({
+    this.http.post("http://localhost:8080/sample", data).subscribe({
       next: (response) => console.log(response),
       error: (error) => console.error("There was an error!", error),
     });

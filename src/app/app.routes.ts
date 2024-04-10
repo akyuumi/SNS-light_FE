@@ -10,10 +10,11 @@ export const routes: Routes = [
     path: "",
     loadComponent: () => import("./features/article/pages/home/home.component"),
   },
-  // {
-  //   path: "sample",
-  //   loadComponent: () => import("./core/auth/sample.component"),
-  // },
+  {
+    path: "sample",
+    loadComponent: () =>
+      import("./core/sample/sample.component").then((m) => m.SampleComponent),
+  },
   {
     path: "login",
     loadComponent: () => import("./core/auth/auth.component"),
